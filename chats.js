@@ -4,7 +4,11 @@ class Chatroom {
         this.username = username;
         this.chats = db.collection('chats');
         this.unsub = false;
+
+
+        //this.idd;
     }
+    
     set room(room){
         this._room = room;
         if(this.unsub){
@@ -17,6 +21,9 @@ class Chatroom {
         }else{
             alert('invalid username')
         }
+        if(this.unsub){
+            this.unsub();
+        }
     }
     get room(){
             return this._room;
@@ -24,8 +31,15 @@ class Chatroom {
     get username(){
         return this._username;
     }
-   
+    /*
+    uuid() {
+        let random = Math.random().toString(16) + Math.random().toString(16);
+        return random;
+    }
+*/
     async addChat(msg){
+
+        //let randomUuid = this.uuid();
         try{
             let docChat = {
                 message: msg,
@@ -48,44 +62,34 @@ class Chatroom {
         .onSnapshot(snapshot => {
             snapshot.docChanges().forEach(change => {
                 if(change.type == 'added'){
-                    callback(change.doc.data());
+                    //callback(change.doc.data());
+                    let documentData = change.doc.data();
+                    let documentId = change.doc.id;
+                    documentData.id = documentId;
+                    callback(documentData);
                 }
             })
         })
     }
-    /*
-    deleteChats(msg) {
+
+    
+    deleteChats(/*msg*/elemID,callback) {
+        this.unsub = this.chats
         this.chats.onSnapshot(elem => {
             elem.forEach(doc => {
-                if(doc.data().message == msg) {
-                    console.log(doc.data().msg);
+                //console.log(doc.data());
+                //console.log(doc.id);
+                if(/*doc.data().message == msg*/doc.id == elemID) {
+                    //console.log(doc.data().message);
                     this.chats
                         .doc(doc.id)
                         .delete()
                         .then(()=> {
-                            window.location.reload(true)
+                            callback()
                         })
                 }
             })
         })
-    }*/
-    deleteChats(msg, callback) {
-        this.chats.onSnapshot(elem => {
-            elem.forEach(doc => {
-                //console.log((doc.data().message).length);
-                if (doc.data().message === msg) {
-                    console.log(doc.data().message);
-                    this.chats
-                        .doc(doc.id)
-                        .delete()
-                        .then(() => {
-                            if (typeof callback === 'function') {
-                                callback();
-                            }
-                        });
-                }
-            });
-        });
     }
 };
 

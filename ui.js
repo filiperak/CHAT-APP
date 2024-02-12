@@ -18,7 +18,6 @@ export class chatUI {
         const year = String(date.getFullYear()).padStart(2, '0');
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
-        //const currentDay = currentDate.getDate();
     
         if (date.toDateString() === currentDate.toDateString()) {
             return `${hours}:${minutes}`;
@@ -29,6 +28,10 @@ export class chatUI {
 
     tamplateLI(dt){
         let liElem = document.createElement('li');
+        
+        liElem.setAttribute('id',dt.id)
+
+
         liElem.classList.add('liElem')
         let liDiv = document.createElement('div');
         liDiv.classList.add('liDiv');

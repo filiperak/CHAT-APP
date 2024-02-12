@@ -76,7 +76,6 @@ formUpdate.addEventListener('submit',(e) => {
     groupIdLabel(groupId,userGroup)
     formUpdate.reset();
     usernameUpdMsg(updUserMsg,usernameVal)
-    //messageUl.reload()
     chatUI1.delete();
     chatroom1.getChats(data => {
         chatUI1.tamplateLI(data)
@@ -124,17 +123,26 @@ messageUl.addEventListener('click', (e) => {
         });
     }
 });*/
+
+
 messageUl.addEventListener('click', (e) => {
+
     if (e.target.tagName === 'IMG') {
-        let msg = e.target.closest('.liElem').querySelector('div:nth-child(2)').innerText;
-        console.log(msg.length,typeof(msg));
-        chatroom1.deleteChats((msg), () => {
+        //let msg = e.target.closest('.liElem').querySelector('div:nth-child(2)').innerText;
+        let msg = e.target.closest('.liElem')
+        let msg2 = msg.id
+        //chatUI1.delete();
+
+        //console.log(msg.length,typeof(msg));
+        chatroom1.deleteChats(msg2, () => {
             chatroom1.getChats(data => {
-                // Update the UI based on the new data
+                window.location.reload();
                 chatUI1.tamplateLI(data)
                 chatUI1.scrollDown(messageUl);
             });
+           //console.log(2);
         });
+         
     }
 });
 
