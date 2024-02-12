@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <aside>
+        <div class="navigation active">
+            <button class="hamburger" onclick="show(); show2()">
+                <div id="bar1" class="bar"></div>
+                <div id="bar2" class="bar"></div>
+                <div id="bar3" class="bar"></div>
+            </button>
+
+            <nav>
+            <!--    <div class="channel">
+                    <p>Channels</p>
+                    <ul>
+                        <li><a>#general</a></li>
+                        <li><a>#JS</a></li>
+                        <li><a>#homeworks</a></li>
+                        <li><a>#tests</a></li>
+                    </ul>
+                </div>
+            -->
+            
+                <div id="chatroomOptions">
+                    <p>Channels</p>
+                    <div class="chatroom" id="general">#general</div>
+                    <div class="chatroom" id="JS">#js</div>
+                    <div class="chatroom" id="homeworks">#homeworks</div>
+                    <div class="chatroom" id="tests">#tests</div>
+                </div>
+            </nav>
+            <form id="inputUpdate" class="inpForm">
+                <label for="username">Change username</label>
+                <input type="text" name="username" id="username" placeholder="Update username">
+                <input type="submit" value="Update" id="btnUpdate" class="btn">
+            </form>
+            <form class="inpForm" id="colorUpdate">
+                <label for="color">Change color</label>
+                <input type="color" name="color" id="color">
+                <input type="submit" value="Update">
+            </form>
+        </div>
+    </aside>
+    <section id="pageContainer" >
+        <header>
+            <h3>ITBootcamp Chat</h3>
+        </header>
+        
+        <section id="msgSection">
+            <div class="group">
+                <div id="groupId">
+                    <!--Channel: general-->
+                </div>
+            </div>
+            <div class="changedUsername hidden" id="updUserMsg">
+                Username changed
+            </div>
+            <ul class="msgUl">
+                
+            </ul>
+        </section>
+        <form id="inputMsg" class="inpForm">
+            <textarea name="msg" id="msg" placeholder="Send message"></textarea>
+            <input type="submit" value="Send" id="btnSend" class="btn">
+        </form>
+        
+    </section>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBoN_XprUe7ncykT0T8SpVrhRP5WpB7LUc",
+            authDomain: "itb-js-p09t23.firebaseapp.com",
+            projectId: "itb-js-p09t23",
+            storageBucket: "itb-js-p09t23.appspot.com",
+            messagingSenderId: "399243124126",
+            appId: "1:399243124126:web:ae1c594791eb9c1cd80a8f"
+        };
+	    // Initialize Firebase
+	    firebase.initializeApp(firebaseConfig);
+	    let db = firebase.firestore();
+    </script>
+    <script src="sideBarScript.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
