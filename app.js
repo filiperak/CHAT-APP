@@ -26,6 +26,7 @@ let usernameStorage = getUserData();
 
 const getUserGroup = () => {
     if(localStorage.getItem('group') == null){
+        window.location.reload()
         return localStorage.setItem('group','general')
     }else{
         return localStorage.getItem('group')
@@ -152,7 +153,6 @@ messageUl.addEventListener('click', (e) => {
         let msg = e.target.closest('.liElem')
         let msg2 = msg.id
         chatroom1.deleteChats(msg2);
-         
     }
 });
 
