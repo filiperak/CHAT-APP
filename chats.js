@@ -73,24 +73,39 @@ class Chatroom {
     }
 
     
-    deleteChats(/*msg*/elemID,callback) {
-        this.unsub = this.chats
-        this.chats.onSnapshot(elem => {
-            elem.forEach(doc => {
-                //console.log(doc.data());
-                //console.log(doc.id);
-                if(/*doc.data().message == msg*/doc.id == elemID) {
-                    //console.log(doc.data().message);
-                    this.chats
-                        .doc(doc.id)
-                        .delete()
-                        .then(()=> {
-                            callback()
-                        })
-                }
+    //deleteChats(elemID,callback) {
+    //    this.unsub = this.chats
+    //    this.chats.onSnapshot(elem => {
+    //        elem.forEach(doc => {
+    //            //console.log(doc.data());
+    //            //console.log(doc.id);
+    //            if(/*doc.data().message == msg*/doc.id == elemID) {
+    //                //console.log(doc.data().message);
+    //                this.chats
+    //                    .doc(doc.id)
+    //                    .delete()
+    //                    .then(()=> {
+    //                        callback()
+    //                    })
+    //            }
+    //        })
+    //    })
+    //}
+    deleteChats(elemID) {
+            this.unsub = this.chats
+            this.chats.onSnapshot(elem => {
+                elem.forEach(doc => {
+                    if(doc.id == elemID) {
+                        this.chats
+                            .doc(doc.id)
+                            .delete()
+                            .then(()=> {
+                                window.location.reload(true)
+                            })
+                    }
+                })
             })
-        })
-    }
+        }
 };
 
 

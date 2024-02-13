@@ -124,7 +124,7 @@ messageUl.addEventListener('click', (e) => {
     }
 });*/
 
-
+/*
 messageUl.addEventListener('click', (e) => {
 
     if (e.target.tagName === 'IMG') {
@@ -145,7 +145,16 @@ messageUl.addEventListener('click', (e) => {
          
     }
 });
+*/
+messageUl.addEventListener('click', (e) => {
 
+    if (e.target.tagName === 'IMG') {
+        let msg = e.target.closest('.liElem')
+        let msg2 = msg.id
+        chatroom1.deleteChats(msg2);
+         
+    }
+});
 
 colorUpdate.addEventListener('submit', (e) => {
     e.preventDefault();
