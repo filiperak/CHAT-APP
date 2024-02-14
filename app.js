@@ -37,7 +37,7 @@ groupIdLabel(groupId,userGroup)
 
 const getuserColor = () => {
     if(localStorage.getItem('color') == null){
-        return localStorage.setItem('color','#e1e3e6')
+        return localStorage.setItem('color','#ffffff80')
     }else{
         return localStorage.getItem('color')
     }
@@ -158,7 +158,8 @@ messageUl.addEventListener('click', (e) => {
 
 colorUpdate.addEventListener('submit', (e) => {
     e.preventDefault();
-    let colorpicker = document.getElementById('color').value;
+    let colorpicker = document.getElementById('color').value + 60;
+    console.log(colorpicker);
     let section1 = document.getElementById('msgSection');
     let section2 = document.getElementById('pageContainer');
     let colerElems = [section1,section2,messageUl];
