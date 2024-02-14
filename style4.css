@@ -156,6 +156,12 @@ nav {
     .navigation{
         z-index: 100 !important;
     }
+    .liDiv div:nth-child(3){
+        margin-top: 3px;
+        font-size: 12px;
+        text-align: end;
+        min-width: 160px;
+    }
 }
 
 .slide{
