@@ -162,6 +162,9 @@ nav {
         text-align: end;
         min-width: 160px;
     }
+    .liDiv{
+        max-width: 75%;
+    }
 }
 
 .slide{
