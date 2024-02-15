@@ -9,9 +9,9 @@ const formUpdate = document.querySelector('#inputUpdate');
 const usernameInp = document.querySelector('#username');
 const chatroomOptions = document.querySelectorAll('.chatroom');
 const groupId = document.querySelector('#groupId');
-const deleteDiv = document.querySelectorAll('.delimg');
 const colorUpdate = document.querySelector('#colorUpdate');
 const updUserMsg = document.querySelector('#updUserMsg');
+const cover = document.querySelector('.cover');
 
 
 //PROVERA I SET USERNAME U LOCALSTORAGE
@@ -42,9 +42,7 @@ const getuserColor = () => {
         return localStorage.getItem('color')
     }
 }
-let section1 = document.getElementById('msgSection');
-let section2 = document.getElementById('pageContainer');
-let colerElems = [section1,section2,messageUl];
+
 let userColor = getuserColor()
 
 
@@ -58,7 +56,8 @@ chatroom1.getChats(data => {
 });
     
     
-chatUI1.colorUpdate(colerElems,userColor)
+//chatUI1.colorUpdate(colerElems,userColor)
+chatUI1.colorUpdateFunc(cover,userColor)
 
 formMsg.addEventListener('submit',(e) => {
     e.preventDefault();
@@ -110,43 +109,6 @@ chatroomOptions.forEach(elem => {
     })
 })
 
-
-/*
-messageUl.addEventListener('click', (e) => {
-
-    if (e.target.tagName === 'IMG') {
-        let msg = e.target.closest('.liElem').querySelector('div:nth-child(2)').innerText//.trim();
-        console.log(msg,e.target);
-        chatroom1.deleteChats(String(msg));
-        chatroom1.getChats(data => {
-            //chatUI1.tamplateLI(data)
-            chatUI1.scrollDown(messageUl)
-        });
-    }
-});*/
-
-/*
-messageUl.addEventListener('click', (e) => {
-
-    if (e.target.tagName === 'IMG') {
-        //let msg = e.target.closest('.liElem').querySelector('div:nth-child(2)').innerText;
-        let msg = e.target.closest('.liElem')
-        let msg2 = msg.id
-        //chatUI1.delete();
-
-        //console.log(msg.length,typeof(msg));
-        chatroom1.deleteChats(msg2, () => {
-            chatroom1.getChats(data => {
-                window.location.reload();
-                chatUI1.tamplateLI(data)
-                chatUI1.scrollDown(messageUl);
-            });
-           //console.log(2);
-        });
-         
-    }
-});
-*/
 messageUl.addEventListener('click', (e) => {
 
     if (e.target.tagName === 'IMG') {
@@ -159,10 +121,6 @@ messageUl.addEventListener('click', (e) => {
 colorUpdate.addEventListener('submit', (e) => {
     e.preventDefault();
     let colorpicker = document.getElementById('color').value + 60;
-    console.log(colorpicker);
-    let section1 = document.getElementById('msgSection');
-    let section2 = document.getElementById('pageContainer');
-    let colerElems = [section1,section2,messageUl];
-    chatUI1.colorUpdate(colerElems,colorpicker)
+    chatUI1.colorUpdateFunc(cover,colorpicker)
     localStorage.setItem('color',colorpicker)
 })

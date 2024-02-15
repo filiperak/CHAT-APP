@@ -6,9 +6,11 @@
 }
 body{
     position: relative;
+    background-size: repeat;
     background-image: url(/img/bg.jpg);
-    background-size: cover;
+
 }
+
 aside {
     background-color: rgb(136, 135, 133);
     height: 100vh;
@@ -133,7 +135,7 @@ nav {
         position: relative;
         left: 250px;
         transition: 0.5s ease-in-out;
-        background-color: #ffffff60;
+        
 
     }
     .navigation{
@@ -150,7 +152,7 @@ nav {
         width: 89%;
         position: relative;
         left: 10%;
-        background-color: #ffffff60;
+        
 
     }
     .navigation{
@@ -194,7 +196,7 @@ nav {
     justify-content: center;
     /*border: 1px solid blue;*/
     height: 90%;
-    background-color: #ffffff60;
+    
 }
 
 .msgUl{
@@ -284,7 +286,8 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    max-width: 300px;
+    max-width: 450px;
+    background-color: #ffffff;
 }
 textarea{
     height: 2rem;

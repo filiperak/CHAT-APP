@@ -76,14 +76,9 @@ export class chatUI {
     scrollDown(UL){
         UL.scrollTop = UL.scrollHeight;
     };
-    colorUpdate(e,cv){
-        e.forEach(elem => {
-            elem.style.backgroundColor = cv;
-            document.body.style.backgroundColor = cv;
-        });
-    }
-
-
+    colorUpdateFunc(e,cv){
+        e.style.backgroundColor = cv;
+    };
 }
 
 export const groupIdLabel = (g,t) => g.innerHTML = `Channel: ${t}`;
