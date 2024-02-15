@@ -165,7 +165,7 @@ nav {
         min-width: 160px;
     }
     .liDiv{
-        max-width: 75%;
+        max-width: 75% !important;
     }
 }
 
